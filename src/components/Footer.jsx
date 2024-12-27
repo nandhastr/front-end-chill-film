@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
                     <div className="hidden md:flex md:gap-8">
                         <div className="flex flex-col gap-6">
-                            <h1 className="font-semibold">Genre</h1>
+                            <h1 className="font-semibold"></h1>
                             <div className="grid grid-cols-2 md:flex md:flex-row gap-4">
                                 <ul className="flex flex-col gap-3">
                                     <li>Aksi</li>

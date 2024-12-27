@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const PopUp = ({ isOpen, onClose, series }) => {
     const navigate = useNavigate(); 
-    const isFilmPage = location.pathname === "/pages/Film";
-    const isEpisodePage = location.pathname === "/pages/Beranda" || location.pathname === "/pages/Series";
+    const isFilmPage = location.pathname === "/film";
+    const isEpisodePage = location.pathname === "/beranda" || location.pathname === "/series";
 
     if (!isOpen || !series) return null;
 
