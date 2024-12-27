@@ -38,7 +38,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin, onSubmit }) {
                 )}
                 {isLogin ? (
                     <div className="flex items-center justify-between text-sm">
-                        <Link to="/pages/Register" className="text-[#C1C2C4] hover:text-white hover:underline transition duration-300">
+                        <Link to="/register" className="text-[#C1C2C4] hover:text-white hover:underline transition duration-300">
                             Belum punya akun? <b>Daftar</b>
                         </Link>
                         <Link to="/forgot-password" className="text-[#C1C2C4] hover:underline hover:text-white transition duration-300">
