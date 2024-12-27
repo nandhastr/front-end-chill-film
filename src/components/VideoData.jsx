@@ -1,0 +1,100 @@
+
+const VideoData = [
+    {
+        id: 1,
+        title: "Film A1",
+        url: "https://logos-world.net/wp-content/uploads/2020/06/YouTube-Logo.png",
+        videoUrl: "https://www.youtube.com/watch?v=LNkMFBEwdCM&ab_channel=StellLirik",
+        year: 2023,
+        rating: "8.5",
+        duration: "120 min",
+        genre: "Action, Adventure",
+        cast: "Actor A, Actor B, Actor C",
+        synopsis: "Film A adalah sebuah film aksi yang menegangkan tentang petualangan seorang pahlawan dalam menyelamatkan dunia.",
+        episodes: [],
+        rekomendasi: [
+            {
+                id: 2,
+                title: "Film B",
+                url: "https://example.com/film-b-thumbnail.jpg",
+                ratingTop: "9.0",
+                status: "Premium",
+            },
+            {
+                id: 3,
+                title: "Film C",
+                url: "https://example.com/film-c-thumbnail.jpg",
+                ratingTop: "8.7",
+                status: "Free",
+            },
+        ],
+    },
+    {
+        id: 2,
+        title: "Film B",
+        url: "https://example.com/film-b-thumbnail.jpg",
+        videoUrl: "https://example.com/film-b-video.mp4",
+        year: 2022,
+        rating: "9.0",
+        duration: "150 min",
+        genre: "Drama, Thriller",
+        cast: "Actor D, Actor E, Actor F",
+        synopsis: "Film B adalah cerita tentang kehidupan seorang detektif yang harus mengungkap kasus pembunuhan misterius.",
+        episodes: [],
+        rekomendasi: [
+            {
+                id: 1,
+                title: "Film A",
+                url: "https://example.com/film-a-thumbnail.jpg",
+                ratingTop: "8.5",
+                status: "Free",
+            },
+            {
+                id: 4,
+                title: "Film D",
+                url: "https://example.com/film-d-thumbnail.jpg",
+                ratingTop: "8.8",
+                status: "Premium",
+            },
+        ],
+    },
+    {
+        id: 3,
+        title: "Series X",
+        url: "https://example.com/series-x-thumbnail.jpg",
+        videoUrl: null,
+        year: 2021,
+        rating: "8.7",
+        duration: "50 min per episode",
+        genre: "Sci-Fi, Mystery",
+        cast: "Actor G, Actor H, Actor I",
+        synopsis: "Series X adalah cerita fiksi ilmiah yang berpusat pada misteri dunia paralel.",
+        episodes: [
+            {
+                id: 1,
+                title: "Episode 1: Awal Mula",
+                url: "https://example.com/episode-1-thumbnail.jpg",
+                duration: "50 min",
+                description: "Episode pertama mengungkapkan dunia paralel yang misterius.",
+            },
+            {
+                id: 2,
+                title: "Episode 2: Masalah Baru",
+                url: "https://example.com/episode-2-thumbnail.jpg",
+                duration: "52 min",
+                description: "Episode kedua mengungkapkan rahasia dunia paralel yang lebih dalam.",
+            },
+        ],
+        rekomendasi: [
+            {
+                id: 4,
+                title: "Film D",
+                url: "https://example.com/film-d-thumbnail.jpg",
+                ratingTop: "8.8",
+                status: "Premium",
+            },
+        ],
+    },
+];
+
+export default VideoData;
