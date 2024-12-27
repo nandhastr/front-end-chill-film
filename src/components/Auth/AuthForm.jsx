@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 function AuthForm({ title, subtitle, buttonText, isLogin, onSubmit }) {
-    // console.log(buttonText);
+    
+    const onLogin = () => {
+        location.href = "/beranda";
+    }
     
 
 
@@ -54,7 +57,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin, onSubmit }) {
                 )}
 
                 {isLogin ? (
-                    <button type="submit" className="w-full rounded-full bg-[#3D4142] text-white py-2 hover:bg-[#707174] transition duration-300 ">
+                    <button type="submit" className="w-full rounded-full bg-[#3D4142] text-white py-2 hover:bg-[#707174] transition duration-300 " onClick={onLogin}>
                         {buttonText}
                     </button>
                 ) : (
