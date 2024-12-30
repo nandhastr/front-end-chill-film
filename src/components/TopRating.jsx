@@ -1,67 +1,45 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "./Carousel";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
+const TOP_RATED = import.meta.env.VITE_TOP_RATED;
+const IMG_URL = import.meta.env.VITE_IMG_URL;
+
+
+
 const TopRating = ({ title }) => {
-    
-    const film = [
-    {
-        title: "Suzume",
-        url: "/img/ratting-film/film 1.png",
-        year: 2021,
-        duration: "2h 18m",
-        genre: "Comedy, Drama, Sci-Fi",
-        cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        status: "Episode Baru",
-        episodes: null,
-    },
-    {
-        title: "Jurassic World",
-        url: "/img/ratting-film/film 2.png",
-        year: 2022,
-        duration: "1h 30m",
-        genre: "Sports, Action",
-        cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        status: "Episode Baru",
-        episodes: null,
-    },
-    {
-        title: "Sonic",
-        url: "/img/ratting-film/film 3.png",
-        year: 2022,
-        duration: "1h 50m",
-        genre: "Horror, Thriller, Action",
-        cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        status: "Episode Baru",
-        episodes: null,
-    },
-    {
-        title: "All of Use are Dead",
-        url: "/img/ratting-film/film 4.png",
-        year: 2023,
-        duration: "1h 40m",
-        genre: "Comedy, Drama",
-        cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        status: "Episode Baru",
-        episodes: null,
-    },
-    {
-        title: "Big hero 6",
-        url: "/img/ratting-film/film 5.png",
-        year: 2023,
-        duration: "2h 10m",
-        genre: "Drama, Thriller",
-        cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-        status: "Episode Baru",
-        episodes: null,
-    },
-    ];
+    const [film, setFilm] = useState([]);
+
+    const filmTopRated = async () => {
+        try {
+            const response = await fetch(`${ BASE_URL }${ TOP_RATED }?api_key=${ API_KEY }`);
+            const data = await response.json()
+            // console.log(data);
+            
+            const formattedFilm = data.results.map((film) => ({
+                slug: "rating",
+                title: film.original_title,
+                url: `${IMG_URL}${film.poster_path}`,
+                year: new Date(film.release_date).getFullYear(),
+                duration: null,
+                genre: film.genre_ids,
+                cast: "N/A",
+                synopsis: film.overview,
+                status: film.vote_average,
+                episodes: null,
+            }));
+            setFilm(formattedFilm);
+        } catch (error) {
+            console.error("Error fetching top-rated movies:", error);
+        }
+            
+    }
+ useEffect(() => {
+     filmTopRated();
+ }, []);
 
     const settings = {
         infinite: true,

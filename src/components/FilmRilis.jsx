@@ -1,66 +1,43 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "./Carousel";
 
-const FilmRilis = ({title}) => {
-    const film = [
-        {
-            title: "The Little Mermaid",
-            url: "/img/rilis-film/film 1.png",
-            ratingTop: "Top 10",
-            year: 2021,
-            duration: "2h 18m",
-            genre: "Comedy, Drama, Sci-Fi",
-            cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            episodes: null,
-        },
-        {
-            title: "Duty After School",
-            url: "/img/rilis-film/film 2.png",
-            year: 2022,
-            status: "Episode Baru",
-            duration: "1h 30m",
-            genre: "Sports, Action",
-            cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            episodes: null,
-        },
-        {
-            title: "Big Hero 6",
-            url: "/img/rilis-film/film 3.png",
-            ratingTop: "Top 10",
-            year: 2022,
-            duration: "1h 50m",
-            genre: "Horror, Thriller, Action",
-            cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            episodes: null,
-        },
-        {
-            title: "All Of Use Are Dead",
-            url: "/img/rilis-film/film 4.png",
-            status: "Episode Baru",
-            year: 2023,
-            duration: "1h 40m",
-            genre: "Comedy, Drama",
-            cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            episodes: null,
-        },
-        {
-            title: "Strom Red Missing",
-            url: "/img/rilis-film/film 5.png",
-            year: 2023,
-            duration: "2h 10m",
-            genre: "Drama, Thriller",
-            cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
-            episodes: null,
-        },
-    ];
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
+const RILIS = import.meta.env.VITE_RILIS;
+const IMG_URL = import.meta.env.VITE_IMG_URL;
 
+const FilmRilis = ({ title }) => {
+    const [film, setFilm] = useState([]);
+
+    const filmRilis = async () => {
+        try {
+            const response = await fetch(`${BASE_URL}${RILIS}?api_key=${API_KEY}`);
+            const data = await response.json();
+            // console.log(data);
+            const formattedFilm = data.results.map((film) => ({
+                slug:"rilis",
+                title: film.original_title,
+                url: `${IMG_URL}${film.poster_path}`,
+                year: new Date(film.release_date).getFullYear(),
+                duration: null,
+                genre: film.genre_ids,
+                cast: "N/A",
+                synopsis: film.overview,
+                status: film.release_date,
+                episodes: null,
+            }));
+            setFilm(formattedFilm);
+            
+        } catch (error) {
+            console.error("Error fetching rilis movies:", error);
+        }
+    }
+    useEffect(() => {
+        filmRilis();
+    }, []);
+   
     const settings = {
         infinite: true,
         speed: 500,

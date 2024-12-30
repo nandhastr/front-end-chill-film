@@ -24,8 +24,15 @@ const Carousel = ({ title, items, settings }) => {
                             <div key={index} className="carousel-item relative">
                                 {item.status ? (
                                     <div className={`absolute top-1 left-1 sm:left-4 w-auto text-white rounded-full px-1 sm:px-2 ${item.status === "Premium" ? "bg-yellow-500" : "bg-blue-600"}`}>
-                                        <div className="flex justify-between items-center px-1 sm:px-2">
-                                            <p className="sm:text-[10px] text-[4px]">{item.status}</p>
+                                        <div className="flex  justify-between items-center px-1 sm:px-2">
+                                            {item.slug === "rilis" || item.slug === "premium" || item.slug === "next" ? (
+                                                <p className="sm:text-[10px] text-[4px]">{item.status}</p>
+                                            ) : (
+                                                <p className="sm:text-[10px] text-[4px]">
+                                                    <i className="fa-solid fa-star text-yellow-400 mr-2" />
+                                                    {item.status}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                 ) : null}
@@ -53,7 +60,7 @@ const Carousel = ({ title, items, settings }) => {
                 </div>
             </div>
 
-            <PopUp isOpen={isOpen} onClose={() => setIsOpen(false)} series={selectedSeries}  />
+            <PopUp isOpen={isOpen} onClose={() => setIsOpen(false)} series={selectedSeries} />
         </section>
     );
 };

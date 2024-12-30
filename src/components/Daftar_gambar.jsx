@@ -2,16 +2,14 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-const Daftar_gambar = ({ title, items }) => {
+const Daftar_gambar = ({ title, items, onDelete }) => {
     const isProfilePage = location.pathname === "/profile";
     return (
         <>
             <section className="mb-4 mt-12">
                 <div className="px-6 flex flex-col sm:gap-6">
-                    {!isProfilePage && (
-                        <h2 className="font-semibold text-sm sm:text-2xl pb-4">{title}</h2>
-                    )}
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 ">
+                    {!isProfilePage && <h2 className="font-semibold text-sm sm:text-2xl pb-4">{title}</h2>}
+                    <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 ">
                         {items.map((item, index) => (
                             <div key={index} className="carousel-item relative">
                                 {item.status ? (
@@ -32,15 +30,21 @@ const Daftar_gambar = ({ title, items }) => {
                                         </div>
                                     </>
                                 ) : null}
+                                {/* btn hapus */}
+                                    <button className="absolute right-[-0.10rem] top-[-0.9rem] bg-transparent border text-white text-[10px] w-[1rem] justify-center items-center rounded-full hover:bg-red-800 transition" onClick={() => onDelete(item.id)}>
+                                        x
+                                    </button>
                                 <img src={item.url} alt={item.title} className=" w-full object-cover rounded-lg hover:scale-[1.1] transition duration-500 mb-2" />
-                                <div className="absolute bottom-0 left-0 w-full p-3 text-white rounded-b-lg">
-                                    <div className="flex justify-between items-center px-2">
-                                        {item.title || item.rating ? (
-                                            <>
-                                                {item.title && <h4 className="text-sm font-medium">{item.title}</h4>}
-                                                {item.rating && <p className="text-sm">⭐ {item.rating}</p>}
-                                            </>
-                                        ) : null}
+                                <div className="relative">
+                                    <div className="absolute bottom-0 left-0 w-full p-3 text-white rounded-b-lg">
+                                        <div className="flex justify-between items-center px-2">
+                                            {item.title || item.rating ? (
+                                                <>
+                                                    {item.title && <h4 className="text-sm font-medium">{item.title}</h4>}
+                                                    {item.rating && <p className="text-sm">⭐ {item.rating}</p>}
+                                                </>
+                                            ) : null}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

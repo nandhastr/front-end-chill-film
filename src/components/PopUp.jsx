@@ -48,8 +48,8 @@ const PopUp = ({ isOpen, onClose, series }) => {
                     </div>
 
                     {isEpisodePage && (
-                        <div className="mt-6">
-                            <h3 className="text-lg font-semibold mb-4">Episodes</h3>
+                        <div className="mt-6 mb-10">
+                            <h3 className="text-lg font-semibold">Episodes</h3>
                             {episodes?.length > 0 ? (
                                 <div className="space-y-4">
                                     {episodes.map((episode, index) => (
@@ -91,6 +91,7 @@ const PopUp = ({ isOpen, onClose, series }) => {
                             </div>
                         </div>
                     )}
+                    
                 </div>
             </div>
         </div>
