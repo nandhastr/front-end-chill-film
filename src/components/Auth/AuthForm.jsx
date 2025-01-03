@@ -1,15 +1,59 @@
- /* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import  saveData  from "../services/api/Create"; 
+import { getDatabase, ref, get } from "firebase/database";
+import app from './../../firebaseConfig';
 
-function AuthForm({ title, subtitle, buttonText, isLogin, onSubmit }) {
-    
-    const onLogin = () => {
-        location.href = "/beranda";
-    }
-    
+function AuthForm({ title, subtitle, buttonText, isLogin }) {
+    const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
+    const loginUser = async () => {
+        const db = getDatabase(app);
+        const usersRef = ref(db, "data/users");
+        get(usersRef)
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    const users = snapshot.val();
+                    const user = Object.values(users).find((u) => u.username === username && u.password === password);
+
+                    if (user) {
+                        console.log("User ditemukan:", user);
+                        alert("Login berhasil!");
+                        localStorage.setItem("isLoggedIn", true);
+                        localStorage.setItem("userId", user.id);
+                        window.location.href = "/beranda";
+                    } else {
+                        alert("Username atau kata sandi salah.");
+                    }
+                } else {
+                    alert("Tidak ada pengguna terdaftar.");
+                }
+            })
+            .catch((error) => {
+                alert("Terjadi kesalahan: " + error.message);
+            });
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        if (isLogin) {
+            loginUser();
+        } else {
+            if (password !== confirmPassword) {
+                alert("Kata sandi dan konfirmasi kata sandi tidak cocok!");
+                return;
+            }
+            // create data
+            saveData(username, email, password, confirmPassword, navigate);
+        }
+    };
 
     return (
         <div className="bg-[#181A1CD6] rounded-lg shadow-lg p-8 md:p-12 max-w-md w-full md:m-10">
@@ -18,25 +62,60 @@ function AuthForm({ title, subtitle, buttonText, isLogin, onSubmit }) {
                 <h2 className="text-white mt-2 font-bold text-3xl">{title}</h2>
                 <p className="text-white mt-2">{subtitle}</p>
             </div>
-            <form className="mt-6 space-y-4" onSubmit={onSubmit}>
+            <form className="mt-6 space-y-4" onSubmit={handleFormSubmit}>
                 <div className="pb-2">
                     <label htmlFor="username" className="text-white text-sm">
                         Username
                     </label>
-                    <input type="text" placeholder="Masukkan username" className="w-full bg-transparent text-[#C1C2C4] placeholder-gray-500 hover:placeholder-gray-400 rounded-full border px-4 py-2 focus:outline transition duration-300" />
+                    <input
+                        autoComplete="off"
+                        type="text"
+                        placeholder="Masukkan username"
+                        className="w-full bg-transparent text-[#C1C2C4] placeholder-gray-500 hover:placeholder-gray-400 rounded-full border px-4 py-2 focus:outline transition duration-300"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="pb-2">
+                    <label htmlFor="email" className="text-white text-sm">
+                        Email
+                    </label>
+                    <input
+                        autoComplete="off"
+                        type="text"
+                        placeholder="Masukkan email"
+                        className="w-full bg-transparent text-[#C1C2C4] placeholder-gray-500 hover:placeholder-gray-400 rounded-full border px-4 py-2 focus:outline transition duration-300"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className="pb-2">
                     <label htmlFor="password" className="text-white text-sm">
                         Kata Sandi
                     </label>
-                    <input type="password" placeholder="Masukkan kata sandi" className="w-full bg-transparent text-[#C1C2C4] placeholder-gray-500 hover:placeholder-gray-400 hover:text-white rounded-full border px-4 py-2 transition duration-300" />
+                    <input
+                        autoComplete="off"
+                        type="password"
+                        placeholder="Masukkan kata sandi"
+                        className="w-full bg-transparent text-[#C1C2C4] placeholder-gray-500 hover:placeholder-gray-400 hover:text-white rounded-full border px-4 py-2 transition duration-300"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 {!isLogin && (
                     <div className="pb-2">
                         <label htmlFor="confirm-password" className="text-white text-sm">
                             Konfirmasi Kata Sandi
                         </label>
-                        <input type="password" id="confirm-password" placeholder="Masukkan ulang kata sandi" className="w-full bg-transparent text-[#C1C2C4] hover:placeholder-gray-400  placeholder-gray-500 rounded-full border px-4 py-2 transition duration-300" />
+                        <input
+                            autoComplete="off"
+                            type="password"
+                            id="confirm-password"
+                            placeholder="Masukkan ulang kata sandi"
+                            className="w-full bg-transparent text-[#C1C2C4] hover:placeholder-gray-400 placeholder-gray-500 rounded-full border px-4 py-2 transition duration-300"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
                     </div>
                 )}
                 {isLogin ? (
@@ -56,15 +135,9 @@ function AuthForm({ title, subtitle, buttonText, isLogin, onSubmit }) {
                     </div>
                 )}
 
-                {isLogin ? (
-                    <button type="submit" className="w-full rounded-full bg-[#3D4142] text-white py-2 hover:bg-[#707174] transition duration-300 " onClick={onLogin}>
-                        {buttonText}
-                    </button>
-                ) : (
-                    <Link to="/" className="w-full block text-center rounded-full bg-[#3D4142] text-white py-2 hover:bg-[#707174] transition duration-300">
-                        {buttonText}
-                    </Link>
-                )}
+                <button type="submit" className="w-full rounded-full bg-[#3D4142] text-white py-2 hover:bg-[#707174] transition duration-300">
+                    {buttonText}
+                </button>
 
                 <>
                     <div className="text-center text-sm text-gray-400">Atau</div>

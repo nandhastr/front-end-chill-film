@@ -1,14 +1,36 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import Navbar from './../components/Navbar';
-import Daftar_saya from './Daftar_saya';
-import SubscriberStatus from './../components/SubscriberStatus';
+import React, { useState } from "react";
+import Navbar from "./../components/Navbar";
+import Daftar_saya from "./Daftar_saya";
+import SubscriberStatus from "./../components/SubscriberStatus";
+import Read from '../components/services/api/Read';
+import Update from './../components/services/api/Update';
+
 
 const Profile = () => {
-    const isSubscribed = false;
+    const [userData, setUserData] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
+
+    const userId = localStorage.getItem("userId");
+
+    const handleInputChange = (field, value) => {
+        setUserData((prevData) => ({
+            ...prevData,
+            [field]: value,
+        }));
+    };
+
+    const refreshPage = () => {
+        window.location.reload();
+    };
+
     return (
         <>
             <Navbar />
+            <Read userId={userId} setUserData={setUserData} />
             <section>
                 <div className="px-14 mt-12">
                     <div className="title">
@@ -29,43 +51,28 @@ const Profile = () => {
                             <div className="flex flex-col mt-4">
                                 <div className="mb-4 bg-gray-700 rounded-lg">
                                     <label className="block text-sm font-medium mb-2 text-[#9D9EA1] px-2">Nama Pengguna</label>
-                                    <div className="flex flex-row justify-between items-center pr-2">
-                                        <input type="text" value="William" className="block w-full bg-gray-700 text-white rounded-lg p-2" />
-                                        <i className="fa-solid fa-pencil" />
-                                    </div>
+                                    <input type="text" value={userData.username} className="block w-full bg-gray-700 text-white rounded-lg p-2" onChange={(e) => handleInputChange("username", e.target.value)} />
                                 </div>
                                 <div className="mb-4 bg-gray-700 rounded-lg">
                                     <label className="block text-sm font-medium mb-2 text-[#9D9EA1] px-2">Email</label>
-                                    <div className="flex flex-row justify-between items-center pr-2">
-                                        <input type="email" value="william1980@gmail.com" className="block w-full bg-gray-700 text-white rounded-lg p-2" />
-                                    </div>
+                                    <input type="email" value={userData.email} className="block w-full bg-gray-700 text-white rounded-lg p-2" onChange={(e) => handleInputChange("email", e.target.value)} />
                                 </div>
                                 <div className="mb-4 bg-gray-700 rounded-lg">
                                     <label className="block text-sm font-medium mb-2 text-[#9D9EA1] px-2">Kata Sandi</label>
-                                    <div className="flex flex-row justify-between items-center pr-2">
-                                        <input type="password" value="********" className="block w-full bg-gray-700 text-white rounded-lg p-2" />
-                                        <i className="fa-solid fa-pencil" />
-                                    </div>
+                                    <input type="password" value={userData.password} className="block w-full bg-gray-700 text-white rounded-lg p-2" onChange={(e) => handleInputChange("password", e.target.value)} />
                                 </div>
                             </div>
-                            <button className="bg-[#09147A] rounded-full w-[7rem] p-2 text-white sm:mt-4 mt-5">Simpan</button>
+                            <Update userId={userId} userData={userData} onUpdate={refreshPage} />
                         </div>
                         <div className="Subscribe">
-                        <SubscriberStatus isSubscribed={isSubscribed} />
+                            <SubscriberStatus isSubscribed={false} />
                         </div>
                     </div>
-
-                    <div className="daftar-saya s:mt-12 mt-12">
-                        <div className="title flex justify-between ">
-                            <h1 className="font-semibold">Daftar Saya</h1>
-                            <h4 className="text-xs hidden md:block">Lihat Semua</h4>
-                        </div>
-                    </div>
+                    <Daftar_saya />
                 </div>
-                <Daftar_saya />
             </section>
         </>
     );
-}
+};
 
-export default Profile
+export default Profile;

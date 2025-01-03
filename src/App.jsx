@@ -9,11 +9,12 @@ import Beranda from "./pages/Beranda";
 import Daftar_saya from "./pages/Daftar_saya";
 import Series from "./pages/Series";
 import Film from "./pages/Film";
-import Profile from './pages/Profile';
-import Langganan from './pages/LanggananPaket';
-import Payment from './components/Payment';
-import PayFinish from './components/PayFinish';
-import VideoPage from './pages/VideoPage';
+import Profile from "./pages/Profile";
+import Langganan from "./pages/LanggananPaket";
+import Payment from "./components/Payment";
+import PayFinish from "./components/PayFinish";
+import VideoPage from "./pages/VideoPage";
+import ProtectedRoute from "./components/Auth/ProtectedRoute"; 
 
 function App() {
     return (
@@ -21,15 +22,79 @@ function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/beranda" element={<Beranda />} />
-                <Route path="/daftar-saya" element={<Daftar_saya />} />
-                <Route path="/series" element={<Series />} />
-                <Route path="/film" element={<Film />} />
-                <Route path="/VideoPage/:id" element={<VideoPage />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/langgananPaket" element={<Langganan />} />
-                <Route path="/payment" element={<Payment />} />
-                <Route path="/payFinish" element={<PayFinish />} />
+
+                <Route
+                    path="/beranda"
+                    element={
+                        <ProtectedRoute>
+                            <Beranda />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/daftar-saya"
+                    element={
+                        <ProtectedRoute>
+                            <Daftar_saya />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/series"
+                    element={
+                        <ProtectedRoute>
+                            <Series />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/film"
+                    element={
+                        <ProtectedRoute>
+                            <Film />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/VideoPage/:id"
+                    element={
+                        <ProtectedRoute>
+                            <VideoPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/langgananPaket"
+                    element={
+                        <ProtectedRoute>
+                            <Langganan />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/payment"
+                    element={
+                        <ProtectedRoute>
+                            <Payment />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/payFinish"
+                    element={
+                        <ProtectedRoute>
+                            <PayFinish />
+                        </ProtectedRoute>
+                    }
+                />
             </Routes>
         </Router>
     );

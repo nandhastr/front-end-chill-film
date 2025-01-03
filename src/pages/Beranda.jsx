@@ -9,9 +9,12 @@ import FilmRilis from '../components/FilmRilis';
 import Footer from '../components/Footer';
 
 const Beranda = () => {
+ 
+
   return (
-      <>
+          <>
           <Navbar />
+
           <HeroSection />
           <MelanjutkanTonton title="Melanjutkan Nonton" />
           <TopRating title="Top Rating Film dan Series Hari ini" />
