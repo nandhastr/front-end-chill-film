@@ -14,7 +14,7 @@ const dataSlice = createSlice({
             const dataItem = state.data.find((item) => item.id === action.payload.id);
             if (!dataItem) {
                 state.data.push(action.payload);
-                console.log("Data di redux: ", action.payload);
+                // console.log("Data di redux: ", action.payload);
             }
         },
         // Mengupdate data berdasarkan ID
@@ -25,7 +25,7 @@ const dataSlice = createSlice({
                     ...state.data[index],
                     ...action.payload,
                 };
-                console.log("Data diperbarui di Redux: ", action.payload);
+                // console.log("Data diperbarui di Redux: ", action.payload);
             }
         },
         // delete data
@@ -33,7 +33,7 @@ const dataSlice = createSlice({
             const index = state.data.findIndex((item) => item.id === action.payload.id);
             if (index !== -1) {
                 state.data.splice(index);
-                console.log("Data dihapus di Redux: ", action.payload);
+                // console.log("Data dihapus di Redux: ", action.payload);
             }
         },
     },
