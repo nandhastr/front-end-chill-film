@@ -1,9 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React,{useState} from 'react'
 
-const Daftar_gambar = ({ title, items, onDelete }) => {
+const Daftar_gambar = ({ title, initialItems }) => {
+    const [items, setItems] = useState(initialItems);
     const isProfilePage = location.pathname === "/profile";
+
+    const handleDeleteItem = (id) => {
+        const confirmDelete = confirm("Apakah anda yakin ingin menghapus film ini dari daftar saya?");
+
+        if (confirmDelete) {
+            setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+            alert(`Film telah dihapus dari daftar saya.`);
+        } else {
+            alert(`Film batal dihapus dari daftar saya.`);
+        }
+    };
+
     return (
         <>
             <section className="mb-4 mt-12">
@@ -31,9 +44,9 @@ const Daftar_gambar = ({ title, items, onDelete }) => {
                                     </>
                                 ) : null}
                                 {/* btn hapus */}
-                                    <button className="absolute right-[-0.10rem] top-[-0.9rem] bg-transparent border text-white text-[10px] w-[1rem] justify-center items-center rounded-full hover:bg-red-800 transition" onClick={() => onDelete(item.id)}>
-                                        x
-                                    </button>
+                                <button className="absolute right-[-0.10rem] top-[-0.9rem] bg-transparent border text-white text-[10px] w-[1rem] justify-center items-center rounded-full hover:bg-red-800 transition" onClick={() => handleDeleteItem(item.id)}>
+                                    x
+                                </button>
                                 <img src={item.url} alt={item.title} className=" w-full object-cover rounded-lg hover:scale-[1.1] transition duration-500 mb-2" />
                                 <div className="relative">
                                     <div className="absolute bottom-0 left-0 w-full p-3 text-white rounded-b-lg">

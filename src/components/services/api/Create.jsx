@@ -1,7 +1,8 @@
+
 import app from "../../../firebaseConfig";
 import { getDatabase, ref, set, push } from "firebase/database";
 
-const saveData = async (username, email, password, confirmPassword, navigate) => {
+const Create = async (username, email, password, confirmPassword, navigate) => {
     if (password !== confirmPassword) {
         alert("Kata sandi dan konfirmasi kata sandi tidak cocok!");
         return;
@@ -12,21 +13,29 @@ const saveData = async (username, email, password, confirmPassword, navigate) =>
     const userId = newDataRef.key;
 
     try {
-        await set(newDataRef, {
+        const newUser = {
             id: userId,
             username,
             email,
             password,
-        });
+        };
+        // simpan ke firebase
+        await set(newDataRef, newUser);
 
+        
+
+        // simpan ke localstorage
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("userId", userId);
+        localStorage.setItem("userData", JSON.stringify(newUser));
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        console.log(userData);
 
-        alert("Registrasi berhasil!");
+        alert("data berhasil di tambahakan ");
         navigate("/");
     } catch (error) {
-        alert("Terjadi kesalahan: " + error.message);
+        console.log("Terjadi kesalahan: " + error.message);
     }
 };
 
-export default saveData;
+export default Create;

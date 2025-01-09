@@ -1,13 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./../components/Navbar";
 import Daftar_saya from "./Daftar_saya";
 import SubscriberStatus from "./../components/SubscriberStatus";
-import Read from '../components/services/api/Read';
+import GetData from '../components/services/api/GetData';
 import Update from './../components/services/api/Update';
+import Delete from "../components/services/api/Delete";
+import { useNavigate } from "react-router-dom";
 
 
 const Profile = () => {
+    const navigate = useNavigate
     const [userData, setUserData] = useState({
         username: "",
         email: "",
@@ -16,6 +19,27 @@ const Profile = () => {
 
     const userId = localStorage.getItem("userId");
 
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (!userId) {
+                console.log("User ID tidak ditemukan.");
+                return;
+            }
+            try {
+                const data = await GetData(userId);
+                if (data) {
+                    setUserData(data);
+                } else {
+                    console.log("Data pengguna tidak ditemukan.");
+                }
+            } catch (error) {
+                console.error("Gagal mengambil data pengguna:", error);
+            }
+        };
+
+        fetchUserData();
+    }, [userId]);
+    
     const handleInputChange = (field, value) => {
         setUserData((prevData) => ({
             ...prevData,
@@ -23,14 +47,19 @@ const Profile = () => {
         }));
     };
 
-    const refreshPage = () => {
+    const handleDelete = () => {
         window.location.reload();
+        navigate("/");
     };
+    const handleUpdate = () => { 
+        window.location.reload();
+        navigate("/profile");
+
+     }
 
     return (
         <>
             <Navbar />
-            <Read userId={userId} setUserData={setUserData} />
             <section>
                 <div className="px-14 mt-12">
                     <div className="title">
@@ -62,7 +91,11 @@ const Profile = () => {
                                     <input type="password" value={userData.password} className="block w-full bg-gray-700 text-white rounded-lg p-2" onChange={(e) => handleInputChange("password", e.target.value)} />
                                 </div>
                             </div>
-                            <Update userId={userId} userData={userData} onUpdate={refreshPage} />
+                            <div className="flex gap-2">
+                                <Update userId={userId} userData={userData}  onUpdateSuccess={handleUpdate} />
+
+                                <Delete userId={userId} onDeleteSuccess={handleDelete} />
+                            </div>
                         </div>
                         <div className="Subscribe">
                             <SubscriberStatus isSubscribed={false} />

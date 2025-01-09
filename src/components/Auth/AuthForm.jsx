@@ -3,9 +3,10 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import  saveData  from "../services/api/Create"; 
+import  Create  from "../services/api/Create"; 
 import { getDatabase, ref, get } from "firebase/database";
 import app from './../../firebaseConfig';
+import LabelInput from './../LabelInput';
 
 function AuthForm({ title, subtitle, buttonText, isLogin }) {
     const navigate = useNavigate();
@@ -51,7 +52,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
                 return;
             }
             // create data
-            saveData(username, email, password, confirmPassword, navigate);
+            Create(username, email, password, confirmPassword, navigate);
         }
     };
 
@@ -64,9 +65,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
             </div>
             <form className="mt-6 space-y-4" onSubmit={handleFormSubmit}>
                 <div className="pb-2">
-                    <label htmlFor="username" className="text-white text-sm">
-                        Username
-                    </label>
+                    <LabelInput htmlFor="username" label="Username" />
                     <input
                         autoComplete="off"
                         type="text"
@@ -77,9 +76,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
                     />
                 </div>
                 <div className="pb-2">
-                    <label htmlFor="email" className="text-white text-sm">
-                        Email
-                    </label>
+                    <LabelInput htmlFor="email" label="Email" />
                     <input
                         autoComplete="off"
                         type="text"
@@ -90,9 +87,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
                     />
                 </div>
                 <div className="pb-2">
-                    <label htmlFor="password" className="text-white text-sm">
-                        Kata Sandi
-                    </label>
+                    <LabelInput htmlFor="password" label="Password" />
                     <input
                         autoComplete="off"
                         type="password"
@@ -104,9 +99,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
                 </div>
                 {!isLogin && (
                     <div className="pb-2">
-                        <label htmlFor="confirm-password" className="text-white text-sm">
-                            Konfirmasi Kata Sandi
-                        </label>
+                        <LabelInput htmlFor="confirm-password" label="Konfirmasi Kata Sandi" />
                         <input
                             autoComplete="off"
                             type="password"

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Daftar_gambar from "../components/Daftar_gambar";
 import Footer from "../components/Footer";
-import { handleDeleteItem } from "../components/services/api/Delete"; 
 
 const Daftar_saya = () => {
     const isProfilePage = location.pathname === "/profile";
@@ -23,14 +22,13 @@ const Daftar_saya = () => {
         { id: 12, url: "/img/Film-saya/film 12.png" },
     ]);
 
-    // delete data
-    const deleteItem = handleDeleteItem(film, setFilm);
+
 
     return (
         <>
             {!isProfilePage && <Navbar />}
             <div>
-                <Daftar_gambar title="Daftar Saya" items={film} onDelete={deleteItem} />
+                <Daftar_gambar title="Daftar Saya" initialItems={film} />
             </div>
             <Footer />
         </>
