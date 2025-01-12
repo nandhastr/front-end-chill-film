@@ -17,34 +17,49 @@ const PopUp = ({ isOpen, onClose, series }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="mt-32 bg-gray-900 text-white rounded-lg w-[90%] md:w-[60%] lg:w-[50%] max-h-screen overflow-y-auto shadow-lg">
-                <div className="relative">
-                    <img src={url} alt={title} className="w-full h-64 object-cover" />
+        <div className="fixed  inset-0 bg-black bg-opacity-50  flex justify-center items-center z-50">
+            <div className="relative mt-32 bg-[#181A1C] text-white rounded-lg w-[90%] md:w-[60%] lg:w-[50%] max-h-screen overflow-y-auto shadow-lg">
+                <div className="">
+                    <img src={url} alt={title} className="w-full h-auto object-cover rounded-b-none rounded-t-lg" />
                     <button className="absolute top-3 right-3 bg-black bg-opacity-50 text-white rounded-full p-2" onClick={onClose}>
                         ✕
                     </button>
                 </div>
 
                 <div className="p-6">
-                    <div className="flex justify-between items-center">
+                    <div className="items-center absolute mt-[-10rem] md:w-[90%]">
                         <h2 className="text-2xl font-bold">{title}</h2>
-                        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={handlePlayVideo}>
-                            Mulai
-                        </button>
+                        <div className="flex justify-between items-center ">
+                            <div className="flex gap-4 items-center">
+                                <button className="bg-blue-600 text-white rounded-[1rem] w-16 h-10 my-2 text-xs flex justify-center items-center" onClick={handlePlayVideo}>
+                                    Mulai
+                                </button>
+                                <button className="border bg-transparent rounded-full my-2 w-10 h-10 flex justify-center items-center text-xl">+</button>
+                            </div>
+                            <div className="sound-icon">
+                                <img src="/img/sound-icon.png" alt="Sound Icon" className=" border rounded-full p-2 w-10 h-10" />
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="mt-4 text-sm text-gray-300">
+                    <div className="mt-4 text-sm text-gray-300 ">
                         <p>
-                            <strong>{year}</strong> | {duration} | {rating}
+                            <span>{year}</span> {duration}  {rating}
                         </p>
-                        <p className="mt-2">
-                            <strong>Genre:</strong> {genre}
-                        </p>
-                        <p className="mt-2">
-                            <strong>Cast:</strong> {cast}
-                        </p>
-                        <p className="mt-2">{synopsis}</p>
+
+                        <div className="md:grid grid-cols-2 md:gap-4">
+                            <p className="mt-2">{synopsis}</p>
+                            <div className="grid grid-rows">
+                                <p className="mt-2 flex gap-2">
+                                    <span>Cast:</span>
+                                    <span>{cast}</span>
+                                </p>
+                                <p className="mt-2 flex gap-2">
+                                    <span>Genre:</span>
+                                    <span> {genre}</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     {isEpisodePage && (
@@ -91,7 +106,6 @@ const PopUp = ({ isOpen, onClose, series }) => {
                             </div>
                         </div>
                     )}
-                    
                 </div>
             </div>
         </div>

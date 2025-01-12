@@ -37,13 +37,13 @@ const LanggananPaket = () => {
           <Navbar />
           <section>
               <div className=" text-white text-center py-10">
-                  <h2 className="text-2xl font-semibold mb-8">Kenapa Harus Berlangganan?</h2>
-                  <div className="justify-center items-center mx-[10rem]">
-                      <div className="grid grid-cols-2 md:grid-cols-3 justify-center gap-12 p-10">
+                  <h2 className="text-2xl font-semibold mb-8 px-8 md:px-10">Kenapa Harus Berlangganan?</h2>
+                  <div className=" mx-[10rem]">
+                      <div className="grid grid-cols-1 md:grid-cols-3  gap-12">
                           {benefits.map((benefit, index) => (
-                              <div key={index} className="flex flex-col items-center max-w-xs text-center">
-                                  <img src={benefit.icon} alt={benefit.title} className="w-10 h-10 mb-4" />
-                                  <p className="text-sm font-medium">{benefit.title}</p>
+                              <div key={index} className="flex flex-col items-center justify-center text-center">
+                                  <img src={benefit.icon} alt={benefit.title} className="md:w-10 max-w-10  mb-4" />
+                                  <p className="text-xs md:text-sm font-medium">{benefit.title}</p>
                               </div>
                           ))}
                       </div>
