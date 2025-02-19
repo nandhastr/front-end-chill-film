@@ -44,6 +44,25 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+
+        if (!username) {
+            alert("Harap isi username");
+            return;
+        }
+        if (!email) {
+            alert("Harap isi email");
+            return;
+        }
+        if (!password) {
+            alert("Harap isi password");
+            return;
+        }
+        if (!confirmPassword) {
+            alert("Harap isi konfirmasi password");
+            return;
+        }
+
+
         if (isLogin) {
             loginUser();
         } else {
