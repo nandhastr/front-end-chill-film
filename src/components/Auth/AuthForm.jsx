@@ -57,11 +57,6 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
             alert("Harap isi password");
             return;
         }
-        if (!confirmPassword) {
-            alert("Harap isi konfirmasi password");
-            return;
-        }
-
 
         if (isLogin) {
             loginUser();
