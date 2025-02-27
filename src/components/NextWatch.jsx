@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React from "react";
 import Carousel from "./Carousel";
 
-const MelanjutkanNonton = ({title}) => {
+const NextWatch = ({title}) => {
    const film = [
        {
            title: "Don't Look Up",
            url: "/img/continue-film/film 1.png",
-           slug: "next",   
+           slug: "next",
            rating: 4.5,
            year: 2021,
            duration: "2h 18m",
@@ -18,9 +16,21 @@ const MelanjutkanNonton = ({title}) => {
            episodes: null,
        },
        {
+           title: "A Man Called Otto",
+           url: "/img/continue-film/film 4.png",
+           slug: "next",
+           rating: 4.3,
+           year: 2022,
+           duration: "2h 6m",
+           genre: "Drama, Comedy",
+           cast: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ",
+           synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum .",
+           episodes: null,
+       },
+       {
            title: "Blue Lock",
            url: "/img/continue-film/film 2.png",
-           slug: "next",   
+           slug: "next",
            rating: 4.2,
            year: 2022,
            duration: "24 episodes (Season 1)",
@@ -31,14 +41,14 @@ const MelanjutkanNonton = ({title}) => {
                {
                    title: "Episode 1: Dream",
                    image: "/img/episodes/blue-lock-ep1.png",
-                   slug: "next",   
+                   slug: "next",
                    duration: "24m",
                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ",
                },
                {
                    title: "Episode 2: Monster",
                    image: "/img/episodes/blue-lock-ep2.png",
-                   slug: "next",   
+                   slug: "next",
                    duration: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ",
                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum .",
                },
@@ -47,7 +57,7 @@ const MelanjutkanNonton = ({title}) => {
        {
            title: "All of Us Are Dead",
            url: "/img/continue-film/film 3.png",
-           slug: "next",   
+           slug: "next",
            rating: 4.6,
            year: 2022,
            duration: "12 episodes (Season 1)",
@@ -58,23 +68,24 @@ const MelanjutkanNonton = ({title}) => {
                {
                    title: "Episode 1: Outbreak",
                    image: "/img/episodes/all-us-ep1.png",
-                   slug: "next",   
+                   slug: "next",
                    duration: "60m",
                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum .",
                },
                {
                    title: "Episode 2: Survival",
                    image: "/img/episodes/all-us-ep2.png",
-                   slug: "next",   
+                   slug: "next",
                    duration: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ",
                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum .",
                },
            ],
        },
+
        {
            title: "A Man Called Otto",
            url: "/img/continue-film/film 4.png",
-           slug: "next",   
+           slug: "next",
            rating: 4.3,
            year: 2022,
            duration: "2h 6m",
@@ -121,4 +132,4 @@ const MelanjutkanNonton = ({title}) => {
     );
 };
 
-export default MelanjutkanNonton;
+export default NextWatch;

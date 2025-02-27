@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
+
 import Card from "./Card";
 import Navbar from "./Navbar";
 import Footer from "./Footer";

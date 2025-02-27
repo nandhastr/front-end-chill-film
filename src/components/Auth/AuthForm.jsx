@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
 import  Create  from "../services/api/Create"; 
 import { getDatabase, ref, get } from "firebase/database";
 import app from './../../firebaseConfig';

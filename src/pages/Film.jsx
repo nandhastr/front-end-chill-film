@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
 import { useLocation } from "react-router-dom";
+
 import Dropdown from "../components/Dropdown";
 import HeroContent from "../components/HeroContent";
 import Navbar from "../components/Navbar";
 import FilmSeries from "../components/FilmSeries";
-import SeriesPersembahan from "../components/SeriesPersembahan";
+import SeriesOffer from "../components/SeriesOffer";
 import TopRating from "../components/TopRating";
 import FilmTrending from "../components/FilmTrending";
 import FilmRilis from "../components/FilmRilis";
@@ -30,14 +29,14 @@ const Film = () => {
                             <Dropdown options={genres} label="Genre" />
                         </div>
                     )}
-                    <img src="/img/film-image.png" className="object-cover w-full sm:w-full h-[70vh] md:h-[80vh] lg:h-[100vh]" alt="Hero" />
+                    <img src="/img/film-image.png" className="object-cover w-full  h-[25rem] md:h-[30rem]" alt="Hero" />
 
                     <HeroContent title={heroTitle} description={heroDescription} />
                 </div>
             </section>
 
             <FilmSeries title="Melanjutkan Tonton Film" />
-            <SeriesPersembahan title="Film Persembahan Chill" />
+            <SeriesOffer title="Film Persembahan Chill" />
             <TopRating title="Top Rating Film Hari Ini" />
             <FilmTrending title="Film Trending" />
             <FilmRilis title="Film Rilis" />

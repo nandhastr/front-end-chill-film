@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React,{useState} from 'react'
+import {useState} from 'react'
 
-const Daftar_gambar = ({ title, initialItems }) => {
+const List_Image = ({ title, initialItems }) => {
     const [items, setItems] = useState(initialItems);
-    const isProfilePage = location.pathname === "/profile";
+    const [showAll, setShowAll] = useState(true);
+    const isMyListPage = location.pathname === "/MyList";
 
     const handleDeleteItem = (id) => {
         const confirmDelete = confirm("Apakah anda yakin ingin menghapus film ini dari daftar saya?");
@@ -21,9 +21,19 @@ const Daftar_gambar = ({ title, initialItems }) => {
         <>
             <section className="mb-4 mt-12">
                 <div className="px-6 flex flex-col sm:gap-6">
-                    {!isProfilePage && <h2 className="font-semibold text-sm sm:text-2xl pb-4">{title}</h2>}
-                    <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 ">
-                        {items.map((item, index) => (
+                    <div className="flex justify-between top-4 mb-4">
+                        {<h2 className="font-semibold text-sm sm:text-2xl">{title}</h2>}
+                        {items.length > 6 && (
+                            <div className=" flex justify-center">
+                                {!isMyListPage &&
+                                <button className=" text-blue-500 hover:underline" onClick={() => setShowAll(!showAll)}>
+                                    {showAll ? "Tampilkan Lebih Sedikit" : "Lihat Semua"}
+                                </button>}
+                            </div>
+                        )}
+                    </div>
+                    <div className="grid grid-cols-3  md:grid-cols-6 gap-2 ">
+                        {(showAll ? items : items.slice(0, 6)).map((item, index) => (
                             <div key={index} className="carousel-item relative">
                                 {item.status ? (
                                     <>
@@ -47,7 +57,9 @@ const Daftar_gambar = ({ title, initialItems }) => {
                                 <button className="absolute right-[-0.10rem] top-[-0.9rem] bg-transparent border text-white text-[10px] w-[1rem] justify-center items-center rounded-full hover:bg-red-800 transition" onClick={() => handleDeleteItem(item.id)}>
                                     x
                                 </button>
-                                <img src={item.url} alt={item.title} className=" w-full object-cover rounded-lg hover:scale-[1.1] transition duration-500 mb-2" />
+
+                                <img src={item.url} alt={item.title} className=" w-full object-cover rounded-lg hover:scale-[1.05] transition duration-500 mb-2" />
+
                                 <div className="relative">
                                     <div className="absolute bottom-0 left-0 w-full p-3 text-white rounded-b-lg">
                                         <div className="flex justify-between items-center px-2">
@@ -69,4 +81,4 @@ const Daftar_gambar = ({ title, initialItems }) => {
     );
 };
 
-export default Daftar_gambar
+export default List_Image

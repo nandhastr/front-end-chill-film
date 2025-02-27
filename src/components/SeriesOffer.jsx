@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React from "react";
 import Carousel from "./Carousel";
 
-const SeriesPersembahan = ({title}) => {
+const SeriesOffer = ({title}) => {
     const film = [
         {
             title: "Premium Show 1",
@@ -244,7 +242,7 @@ const SeriesPersembahan = ({title}) => {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 3.09,
+                    slidesToShow: 3.5,
                     slidesToScroll: 1,
                     arrows: true,
                 },
@@ -252,7 +250,7 @@ const SeriesPersembahan = ({title}) => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1.04,
+                    slidesToShow: 3.1,
                     slidesToScroll: 1,
                     arrows: true,
                 },
@@ -267,4 +265,4 @@ const SeriesPersembahan = ({title}) => {
     );
 };
 
-export default SeriesPersembahan;
+export default SeriesOffer;

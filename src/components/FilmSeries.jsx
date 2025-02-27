@@ -1,12 +1,41 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React from "react";
 import Carousel from "./Carousel";
 
 const FilmSeries = ({title}) => {
     const film = [
         {
-            id:1,
+            title: "Lorem ipsum dolor ",
+            url: "/img/Series-film/film 3.png",
+            status: "Episode baru",
+            slug: "next",
+            year: "2008",
+            rating: "9.5",
+            duration: "47 mins",
+            genre: "Crime, Drama, Thriller",
+            cast: "Bryan Cranston, Aaron Paul, Anna Gunn",
+            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
+            episodes: [
+                {
+                    title: "Lorem ipsum dolor ",
+                    url: "/img/Series-film/film 3.png",
+                    duration: "58 min",
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsume Pinkman.",
+                },
+                {
+                    title: "Lorem ipsum dolor",
+                    url: "/img/Series-film/film 2.png",
+                    duration: "47 min",
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+                },
+                {
+                    title: "Lorem ipsum dolor",
+                    url: "/img/Series-film/film 4.png",
+                    duration: "48 min",
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+                },
+            ],
+        },
+        {
             title: "Lorem ipsum 1",
             url: "/img/Series-film/film 1.png",
             status: "Episode baru",
@@ -34,6 +63,38 @@ const FilmSeries = ({title}) => {
                     title: "Lorem ipsum dolor ",
                     url: "/img/Series-film/film 1.png",
                     duration: "28 min",
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+                },
+            ],
+        },
+        {
+            title: "Lorem ipsum dolor ",
+            url: "/img/Series-film/film 3.png",
+            status: "Episode baru",
+            slug: "next",
+            year: "2008",
+            rating: "9.5",
+            duration: "47 mins",
+            genre: "Crime, Drama, Thriller",
+            cast: "Bryan Cranston, Aaron Paul, Anna Gunn",
+            synopsis: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
+            episodes: [
+                {
+                    title: "Lorem ipsum dolor ",
+                    url: "/img/Series-film/film 3.png",
+                    duration: "58 min",
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsume Pinkman.",
+                },
+                {
+                    title: "Lorem ipsum dolor",
+                    url: "/img/Series-film/film 2.png",
+                    duration: "47 min",
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+                },
+                {
+                    title: "Lorem ipsum dolor",
+                    url: "/img/Series-film/film 4.png",
+                    duration: "48 min",
                     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
                 },
             ],
@@ -117,7 +178,7 @@ const FilmSeries = ({title}) => {
                 {
                     breakpoint: 768,
                     settings: {
-                        slidesToShow: 3.5,
+                        slidesToShow: 1.5,
                         slidesToScroll: 1,
                         arrows: true,
                     },

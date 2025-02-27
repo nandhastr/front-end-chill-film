@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Navbar from "./../components/Navbar";
-import Daftar_saya from "./Daftar_saya";
+import M_List from "./My_List";
 import SubscriberStatus from "./../components/SubscriberStatus";
 import GetData from '../components/services/api/GetData';
 import Update from './../components/services/api/Update';
 import Delete from "../components/services/api/Delete";
-import { useNavigate } from "react-router-dom";
 
 
 const Profile = () => {
@@ -62,11 +62,11 @@ const Profile = () => {
             <Navbar />
             <section>
                 <div className="px-14 mt-12">
-                    <div className="title">
-                        <h1 className="font-semibold">Profile Saya</h1>
-                    </div>
-                    <div className="grid sm:grid-cols-2 mt-2 sm:mt-7 sm:gap-10 gap-4 grid-cols-1">
+                    <div className="grid sm:grid-cols-2 mt-2 sm:mt-7 sm:gap-10 gap-4 grid-cols-1 mb-9">
                         <div className="profile flex flex-col sm:order-first order-last ">
+                    <div className="title mb-5">
+                        <h3 className="font-semibold">Profile Saya</h3>
+                    </div>
                             <div className="flex gap-8 items-center">
                                 <img src="/img/user.png" alt="" className="rounded-full sm:w-24 w-16 border" />
                                 <div className="ket flex flex-col gap-4">
@@ -101,7 +101,9 @@ const Profile = () => {
                             <SubscriberStatus isSubscribed={false} />
                         </div>
                     </div>
-                    <Daftar_saya />
+
+                    <M_List  />
+                        
                 </div>
             </section>
         </>

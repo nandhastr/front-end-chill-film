@@ -5,12 +5,12 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Beranda from "./pages/Beranda";
-import Daftar_saya from "./pages/Daftar_saya";
+import DashBoard from "./pages/Dashboard";
+import My_List from "./pages/My_List";
 import Series from "./pages/Series";
 import Film from "./pages/Film";
 import Profile from "./pages/Profile";
-import Langganan from "./pages/LanggananPaket";
+import Subscription from "./pages/PackageSubscription";
 import Payment from "./components/Payment";
 import PayFinish from "./components/PayFinish";
 import VideoPage from "./pages/VideoPage";
@@ -23,27 +23,26 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/listview" element={<ListView/>}/>
+                <Route path="/listview" element={<ListView />} />
                 <Route path="/add" element={<Add />} />
-                <Route path="/edit" element={<Edit/>}/>
-                
+                <Route path="/edit" element={<Edit />} />
 
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
                 <Route
-                    path="/beranda"
+                    path="/Dashboard"
                     element={
                         <ProtectedRoute>
-                            <Beranda />
+                            <DashBoard />
                         </ProtectedRoute>
                     }
                 />
                 <Route
-                    path="/daftar-saya"
+                    path="/MyList"
                     element={
                         <ProtectedRoute>
-                            <Daftar_saya />
+                            <My_List />
                         </ProtectedRoute>
                     }
                 />
@@ -80,10 +79,10 @@ function App() {
                     }
                 />
                 <Route
-                    path="/langgananPaket"
+                    path="/subscription package"
                     element={
                         <ProtectedRoute>
-                            <Langganan />
+                            <Subscription />
                         </ProtectedRoute>
                     }
                 />

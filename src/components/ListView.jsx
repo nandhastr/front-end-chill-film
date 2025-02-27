@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import GetData from "./services/api/GetData";
 import { setData } from "../../store/redux/dataSlice";
 import { useNavigate } from "react-router-dom";

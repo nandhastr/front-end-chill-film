@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
 import Card from './Card';
 
-const PaketChoice = () => {
+const PackageChoice = () => {
   const handleSubscribe = () => {
       location.href = "/Payment";
   };
@@ -41,4 +39,4 @@ const PaketChoice = () => {
   );
 }
 
-export default PaketChoice
+export default PackageChoice

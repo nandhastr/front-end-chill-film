@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
 import { useLocation } from "react-router-dom";
+
 import Dropdown from "../components/Dropdown";
 import HeroContent from "../components/HeroContent";
 import Navbar from "../components/Navbar";
 import FilmSeries from "../components/FilmSeries";
-import SeriesPersembahan from "../components/SeriesPersembahan";
+import SeriesOffer from "../components/SeriesOffer";
 import TopRating from "../components/TopRating";
 import FilmTrending from "../components/FilmTrending";
 import FilmRilis from "../components/FilmRilis";
@@ -32,18 +31,18 @@ const Series = () => {
                             <Dropdown options={genres} label="Genre" />
                         </div>
                     )}
-                    <img src="/img/series-image.png" className="object-cover w-full sm:w-full h-[70vh] md:h-[80vh] lg:h-[100vh]" alt="Hero" />
+                    <img src="/img/series-image.png" className="object-cover w-full  h-[25rem] md:h-[30rem]" alt="Hero" />
 
                     <HeroContent title={heroTitle} description={heroDescription} />
                 </div>
             </section>
 
             <FilmSeries title="Melanjutkan Tonton Series" />
-            <SeriesPersembahan title="Series Persembahan Chill" />
+            <SeriesOffer title="Series Persembahan Chill" />
             <TopRating title="Top Rating Series" />
             <FilmTrending title="Series Trending" />
             <FilmRilis title="Film Rilis" />
-            <Footer/>
+            <Footer />
         </>
     );
 };

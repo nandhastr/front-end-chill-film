@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
 import Navbar from '../components/Navbar';
-import PaketChoice from './../components/PaketChoice';
-import Footer from './../components/Footer';
+import PackageChoice from '../components/PackageChoice';
+import Footer from '../components/Footer';
 
-const LanggananPaket = () => {
+const PackageSubscription = () => {
   const benefits = [
         {
             icon: "/img/componen-img/download-icon.png",
@@ -51,7 +49,7 @@ const LanggananPaket = () => {
               </div>
           </section>
           <section className="bg-[#22282A] w-[100%] py-10">
-              <PaketChoice />
+              <PackageChoice />
           </section>
           <section>
               <Footer/>
@@ -60,4 +58,4 @@ const LanggananPaket = () => {
   );
 }
 
-export default LanggananPaket
+export default PackageSubscription;

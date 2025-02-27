@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React from "react";
 import { Link } from 'react-router-dom';
 
 const SubscriberStatus = ({ isSubscribed }) => {
@@ -24,7 +22,7 @@ const SubscriberStatus = ({ isSubscribed }) => {
                             <div className="date mt-4 justify-center items-center">
                                 <p className="text-xs">Berlaku hingga 31 Desember 2023</p>
                             </div>
-                        </div>    
+                        </div>
                     ) : (
                         <div>
                             <p>Dapatkan Akses Tak Terbatas ke Ribuan Film dan Series Kesukaan Kamu!</p>
@@ -34,7 +32,9 @@ const SubscriberStatus = ({ isSubscribed }) => {
             </div>
             {!isSubscribed && (
                 <div className="btn mt-4 items-end flex justify-end">
-                    <Link to="/LanggananPaket" className="btn-langganan bg-[#2F3334b] border border-gray-500 rounded-full p-2 hover:scale-[1.1] hover:text-[#9D9EA1] hover:bg-[#3D4142] transition duration-300 text-sm">Mulai Berlangganan</Link>
+                    <Link to="/subscription package" className="btn-langganan bg-[#2F3334b] border border-gray-500 rounded-full p-2 hover:scale-[1.1] hover:text-[#9D9EA1] hover:bg-[#3D4142] transition duration-300 text-sm">
+                        Mulai Berlangganan
+                    </Link>
                 </div>
             )}
         </div>

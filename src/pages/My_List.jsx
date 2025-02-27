@@ -1,13 +1,12 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
+
 import Navbar from "../components/Navbar";
-import Daftar_gambar from "../components/Daftar_gambar";
+import List_Image from "../components/List_Image";
 import Footer from "../components/Footer";
 
-const Daftar_saya = () => {
+const My_List = () => {
     const isProfilePage = location.pathname === "/profile";
-
-    const [film, setFilm] = useState([
+    const [film] = useState([
         { id: 1, status: "Episode baru", ratingTop: "Top 10", url: "/img/Film-saya/film 1.png" },
         { id: 2, url: "/img/Film-saya/film 2.png" },
         { id: 3, status: "Episode baru", url: "/img/Film-saya/film 3.png" },
@@ -28,11 +27,11 @@ const Daftar_saya = () => {
         <>
             {!isProfilePage && <Navbar />}
             <div>
-                <Daftar_gambar title="Daftar Saya" initialItems={film} />
+                <List_Image title="Daftar Film Saya" initialItems={film} />
             </div>
             <Footer />
         </>
     );
 };
 
-export default Daftar_saya;
+export default My_List;

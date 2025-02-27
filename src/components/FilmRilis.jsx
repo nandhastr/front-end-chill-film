@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Carousel from "./Carousel";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -58,7 +57,7 @@ const FilmRilis = ({ title }) => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1.04,
+                    slidesToShow: 3.1,
                     slidesToScroll: 1,
                     arrows: true,
                 },

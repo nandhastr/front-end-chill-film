@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
@@ -33,7 +32,7 @@ const Navbar = () => {
                     <div className="flex justify-between items-center px-4">
                         <div className="flex items-center gap-8">
                             <div className="flex items-center justify-center">
-                                <Link to="/beranda">
+                                <Link to="/Dashboard">
                                     <img src="/img/logo.png" alt="Logo" className="h-4 w-auto sm:h-10 object-fill" />
                                 </Link>
                             </div>
@@ -45,7 +44,7 @@ const Navbar = () => {
                                 <a href="/film" className="hover:text-gray-300 sm:text-sm text-[8px] transition-colors duration-200">
                                     Film
                                 </a>
-                                <a href="/daftar-saya" className="hover:text-gray-300 sm:text-sm text-[8px] transition-colors duration-200">
+                                <a href="/MyList" className="hover:text-gray-300 sm:text-sm text-[8px] transition-colors duration-200">
                                     Daftar Saya
                                 </a>
                             </div>
@@ -68,8 +67,8 @@ const Navbar = () => {
                                     <button
                                         className="block px-4 py-2 text-[8px] sm:text-sm text-white hover:text-blue-600 p-4 hover:bg-[#484a4d] transition duration-300"
                                         onClick={() => {
-                                            closeDropdown(); 
-                                            handleLogout(); 
+                                            closeDropdown();
+                                            handleLogout();
                                         }}
                                     >
                                         <i className="mr-4 fa-solid fa-arrow-right-from-bracket" />
