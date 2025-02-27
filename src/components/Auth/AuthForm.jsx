@@ -28,7 +28,7 @@ function AuthForm({ title, subtitle, buttonText, isLogin }) {
                         alert("Login berhasil!");
                         localStorage.setItem("isLoggedIn", true);
                         localStorage.setItem("userId", user.id);
-                        window.location.href = "/beranda";
+                        window.location.href = "/Dashboard";
                     } else {
                         alert("Username atau kata sandi salah.");
                     }
