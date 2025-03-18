@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useLocation } from "react-router-dom";
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
 
 const PopUp = ({ isOpen, onClose, series }) => {
     const navigate = useNavigate(); 
+    const location = useLocation();
+    
     const isFilmPage = location.pathname === "/film";
-    const isEpisodePage = location.pathname === "/beranda" || location.pathname === "/series";
+    const isEpisodePage = location.pathname === "/series";
 
     if (!isOpen || !series) return null;
 
@@ -36,15 +39,15 @@ const PopUp = ({ isOpen, onClose, series }) => {
                                 </button>
                                 <button className="border bg-transparent rounded-full my-2 w-10 h-10 flex justify-center items-center text-xl">+</button>
                             </div>
-                            <div className="sound-icon">
-                                <img src="/img/sound-icon.png" alt="Sound Icon" className=" border rounded-full p-2 w-10 h-10" />
+                            <div className="border rounded-full">
+                                <i className="fa-solid fa-volume-high  p-[0.5rem]  relative after:content-[''] after:absolute after:left-0 after:top-1/2 after:w-full after:h-[2px] after:bg-white after:rotate-[20deg]"></i>
                             </div>
                         </div>
                     </div>
 
                     <div className="mt-4 text-sm text-gray-300 ">
                         <p>
-                            <span>{year}</span> {duration}  {rating}
+                            <span>{year}</span> {duration} {rating}
                         </p>
 
                         <div className="md:grid grid-cols-2 md:gap-4">
