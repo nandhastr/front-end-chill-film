@@ -17,6 +17,7 @@ const Navbar = () => {
         const auth = getAuth();
         try {
             await signOut(auth);
+            localStorage.setItem("isLoggedIn", false);
             alert("Anda telah keluar.");
             window.location.href = "/";
         } catch (error) {
